@@ -7,40 +7,57 @@ class RemoboardClient:
         self.key = '##rkb-1l0v3y0u3000##'
 
     def ping(self):
-        data = {
-            'msg': 'input' + self.key + ''
-        }
-        r = requests.post(self.apiurl, data)
-        if r.status_code != 200:
-            return False
-        return r.text == '{ "result": 0 }'
+        try:
+            data = {
+                'msg': 'input' + self.key + ''
+            }
+            r = requests.post(self.apiurl, data)
+            if r.status_code != 200:
+                return False
+            return r.text == '{ "result": 0 }'
+        except:
+            pass
+        return False
+
 
     def input(self, text):
-        data = {
-            'msg': 'input' + self.key + text 
-        }
-        r = requests.post(self.apiurl, data)
-        if r.status_code != 200:
-            return False
-        return r.text == '{ "result": 0 }'
+        try:
+            data = {
+                'msg': 'input' + self.key + text 
+            }
+            r = requests.post(self.apiurl, data)
+            if r.status_code != 200:
+                return False
+            return r.text == '{ "result": 0 }'
+        except:
+            pass
+        return False
 
     def delete(self):
-        data = {
-            'msg': 'input-delete' + self.key + ''
-        }
-        r = requests.post(self.apiurl, data)
-        if r.status_code != 200:
-            return False
-        return r.text == '{ "result": 0 }'
+        try:
+            data = {
+                'msg': 'input-delete' + self.key + ''
+            }
+            r = requests.post(self.apiurl, data)
+            if r.status_code != 200:
+                return False
+            return r.text == '{ "result": 0 }'
+        except:
+            pass
+        return False
 
     def _move(self, direction):
-        data = {
-            'msg': 'move-' + direction + self.key + '' 
-        }
-        r = requests.post(self.apiurl, data)
-        if r.status_code != 200:
-            return False
-        return r.text == '{ "result": 0 }'
+        try:
+            data = {
+                'msg': 'move-' + direction + self.key + '' 
+            }
+            r = requests.post(self.apiurl, data)
+            if r.status_code != 200:
+                return False
+            return r.text == '{ "result": 0 }'
+        except:
+            pass
+        return False
 
     def move_up(self):
         return self._move('up')
